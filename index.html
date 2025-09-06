@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Slide Generator</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">✨ SlideGen Pro</div>
+            <div class="stats">
+                <div id="slideCount">Slides: 0</div>
+                <div id="lastUpdated">Ready to create</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Controls Section -->
+    <section class="controls-section">
+        <div class="controls-grid">
+            <!-- JSON Upload Card -->
+            <div class="control-card">
+                <h3 class="card-title">📁 Import Slides Data</h3>
+                <p class="card-subtitle">Upload your JSON file containing slide content. Supports drag & drop.</p>
+
+                <div class="file-upload-area" onclick="document.getElementById('jsonFile').click()"
+                     ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+                    <div class="upload-icon">📄</div>
+                    <div class="upload-text">Click to upload or drag JSON file here</div>
+                    <div class="upload-subtext">Supports .json files up to 10MB</div>
+                    <input type="file" id="jsonFile" accept=".json" style="display: none;" onchange="loadJsonFile(event)">
+                </div>
+
+                <!-- Overlay Upload Section -->
+                <div class="overlay-section">
+                    <h4 style="font-size: 14px; margin-bottom: 10px; color: rgba(255,255,255,0.8);">🎨 Brand Overlay (Optional)</h4>
+                    <p style="font-size: 12px; color: rgba(255,255,255,0.6); margin-bottom: 15px;">Upload a background image to brand your slides</p>
+                    <input type="file" id="overlayFile" accept="image/*" style="display: none;" onchange="loadOverlayImage(event)">
+                    <button class="btn btn-info" style="padding: 8px 16px; font-size: 12px;" onclick="document.getElementById('overlayFile').click()">
+                        Choose Image
+                    </button>
+                    <div id="overlayPreview" class="overlay-preview">No overlay selected</div>
+                </div>
+
+                <div id="fileStatus" class="status-area">
+                    📁 Please upload a JSON file with your slide data to begin
+                </div>
+            </div>
+
+            <!-- Actions Card -->
+            <div class="control-card">
+                <h3 class="card-title">🚀 Actions</h3>
+                <p class="card-subtitle">Generate, download, and manage your presentation slides.</p>
+
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="generateSlides()" id="generateBtn" disabled>
+                        Generate Slides
+                    </button>
+                    <button class="btn btn-success" onclick="downloadSlides()">
+                        📥 Download PNG
+                    </button>
+                    <button class="btn btn-info" onclick="printSlides()">
+                        🖨️ Export PDF
+                    </button>
+                    <button class="btn btn-danger" onclick="clearSlides()">
+                        🗑️ Clear All
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slides Section -->
+    <section class="slides-section">
+        <div class="section-header">
+            <h2 class="section-title">Your Slides</h2>
+            <div class="slide-counter" id="slideCounter">0 slides generated</div>
+        </div>
+        <div id="slides-container" class="slides-grid"></div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="./js/index.js"></script>t
+</body>
+</html>
