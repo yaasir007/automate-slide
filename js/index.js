@@ -240,6 +240,7 @@ function clearSlides() {
 
   if (confirm("Are you sure you want to clear all slides?")) {
     document.getElementById("slides-container").innerHTML = "";
+    location.reload();
     updateStats();
   }
 }
