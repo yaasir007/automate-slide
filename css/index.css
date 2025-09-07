@@ -358,7 +358,8 @@ body {
   font-weight: 700;
   margin-bottom: 15px;
   line-height: 1.2;
-  background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
+  color: white;
+  background: transparent;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
