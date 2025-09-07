@@ -120,8 +120,6 @@ function loadJsonFile(event) {
 
 // Create enhanced slide with overlay support
 function createSlide(slideData, index) {
-  const slideDiv = document.createElement("div");
-  slideDiv.className = "slide-div";
   const slide = document.createElement("div");
   slide.className = "slide";
   slide.setAttribute("data-slide", index);
@@ -161,7 +159,7 @@ function createSlide(slideData, index) {
                         ${contentHTML}
                     </div>
                     <div class="slide-footer">
-                        @yaasir.codes
+                        By <span style="color: gold;">@yaasir.codes</span>. Follow me for more!
                     </div>
                 </div>
             `;
@@ -215,6 +213,7 @@ async function downloadSlides() {
       await new Promise((resolve) => setTimeout(resolve, 500));
     }
 
+    alert(`🎉 Successfully downloaded ${slides.length} slides!`);
   } catch (error) {
     console.error("Error generating slides:", error);
     alert("Error generating slides. Please try again.");
@@ -240,7 +239,6 @@ function clearSlides() {
 
   if (confirm("Are you sure you want to clear all slides?")) {
     document.getElementById("slides-container").innerHTML = "";
-    location.reload();
     updateStats();
   }
 }
